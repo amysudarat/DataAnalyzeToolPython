@@ -1,4 +1,4 @@
-Step how setup the environment to work with Visual Studio Code
+## Step how setup the environment to work with Visual Studio Code
 1. Install the latest Anaconda to get an access to SciPy, Pandas package
 2. Can install visual studio code via anaconda or install it separately
 3. Install Python extension 
