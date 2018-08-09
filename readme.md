@@ -1,3 +1,8 @@
+## Main and Library
+-Main function is in main.py
+-importData contain function involving read data from file
+-plotData.py contain function involving ploting circumplex model of affect and overlaying label annotation
+
 ## Note on Installation (Visual Studio Code)
 1. Install the latest Anaconda to get an access to SciPy, Pandas package
 2. Can install visual studio code via anaconda or install it separately
