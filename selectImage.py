@@ -3,8 +3,6 @@ from plotData import plotCircumplex
 from importData import importIAPS
 from importData import filterIAPS
 import shutil
-import os
-
 
 def main():
     # Get targeted dataframe
@@ -16,7 +14,7 @@ def main():
     # Copy all the selected picture to the targeted folder
     for i in fileNameList:
         # Declare src and dest   
-        src = r"C:\Users\DSPLab\Research\IAPSdata\IAPS 1-20 Images\\" +str(i) + r".jpg"
+        src = r"C:\Users\DSPLab\Research\IAPSdata\IAPS 1-20 Images\\" + str(i) + r".jpg"
         dest = r"C:\Users\DSPLab\Research\IAPSdata\IAPS 1-20 Images\\Sample1\\" + str(i) + r".jpg"
         copyFile(src,dest)
 
