@@ -8,5 +8,5 @@
 2. Can install visual studio code via anaconda or install it separately
 3. Install Python extension 
 4. Press Ctr+Shift+P and find Python:Select Interpreter and set "python.pythonPath": "C:\\Users\\DSPLab\\Anaconda3\\python.exe"
-5. Press Ctr+Shift+P and find Python:Select Linter then choose pylint or install pylint if it is not installed
+5. Press Ctr+Shift+P and find Python:Select Linter then choose pylint or install pylint if it is not installed yet
 6. Set shortcut key as Ctrl+R chord R

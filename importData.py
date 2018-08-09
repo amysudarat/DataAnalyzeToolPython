@@ -31,13 +31,9 @@ def filterIAPS(IAPS_df,v,a,width=1):
     tmp = IAPS_df[ (IAPS_df['Val_mn'] < v+width ) & ( IAPS_df['Val_mn'] >v-width)& ( IAPS_df['Arou_mn'] <a+width)& ( IAPS_df['Arou_mn'] >a-width)]
     # Get index of rows from filtered dataframe
     indexOfFiltered = tmp.index.values
-
+    #return list of indexs
     return indexOfFiltered
 
-def checkRange(value,center,width):
-    if center-width/2 <= value <= center+width/2:
-        return True
-    return False
 
 def filterCornerIAPS(IAPS_df):
     IAPS_df_filtered = pd.DataFrame()
