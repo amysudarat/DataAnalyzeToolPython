@@ -3,24 +3,23 @@ import pandas as pd
 # plt.style.use('Solarize_Light2')
 # plt.style.use('ggplot')
 
-def plotCircumplex(IAPS_df,amp):
+def plotCircumplex(IAPS_df,amp,indexs):
     
     ''' Plot the data '''
     fig = plt.figure()
-    ax = fig.add_subplot(121)
+    ax = fig.add_subplot(111)
     ax.scatter(IAPS_df['Val_mn'],IAPS_df['Arou_mn'],s=amp*IAPS_df['Val_sd'],alpha=0.5,c='gold')
-    bx = fig.add_subplot(122)
-    bx.scatter(IAPS_df['Val_mn'],IAPS_df['Arou_mn'],s=amp*IAPS_df['Arou_sd'],alpha=0.5,c='gold')
-    indexs = (24,39,68,120,146,393,409,450,485,572,592,869,1097,698)
+    # bx = fig.add_subplot(122)
+    # bx.scatter(IAPS_df['Val_mn'],IAPS_df['Arou_mn'],s=amp*IAPS_df['Arou_sd'],alpha=0.5,c='gold')
     for index in indexs:    
         ax.annotate(IAPS_df['Description'][index],
                             xy=(IAPS_df['Val_mn'][index],IAPS_df['Arou_mn'][index]),xycoords='data',
                             xytext=(IAPS_df['Val_mn'][index],IAPS_df['Arou_mn'][index]), textcoords='data',
                             arrowprops=dict(facecolor='black',shrink=0.05))
-        bx.annotate(IAPS_df['Description'][index],
-                            xy=(IAPS_df['Val_mn'][index],IAPS_df['Arou_mn'][index]),xycoords='data',
-                            xytext=(IAPS_df['Val_mn'][index],IAPS_df['Arou_mn'][index]), textcoords='data',
-                            arrowprops=dict(facecolor='black',shrink=0.05))
+        # bx.annotate(IAPS_df['Description'][index],
+        #                     xy=(IAPS_df['Val_mn'][index],IAPS_df['Arou_mn'][index]),xycoords='data',
+        #                     xytext=(IAPS_df['Val_mn'][index],IAPS_df['Arou_mn'][index]), textcoords='data',
+        #                     arrowprops=dict(facecolor='black',shrink=0.05))
 
     ''' Check with axis configuration here:
     https://stackoverflow.com/questions/31556446/drawing-axis-in-the-middle-of-the-figue-in-python
@@ -39,10 +38,12 @@ def plotCircumplex(IAPS_df,amp):
     # Show ticks in the left and lower axes only
     ax.xaxis.set_ticks_position('bottom')
     ax.yaxis.set_ticks_position('left')
-    ax.set_title("Circumplex (SD valence")
+    ax.set_title("Circumplex Model of affect (SD valence)")
     ax.set_xlabel("Valence")
     ax.set_ylabel("Arousal")
+    plt.show()
 
+'''
     # Move left y-axis and bottim x-axis to centre, passing through (0,0)
     bx.spines['left'].set_position('center')
     bx.spines['bottom'].set_position('center')
@@ -58,9 +59,9 @@ def plotCircumplex(IAPS_df,amp):
     bx.yaxis.set_ticks_position('left')
     bx.set_title("Circumplex (SD arousal)")
     bx.set_xlabel("Valence")
-    bx.set_ylabel("Arousal")
+    bx.set_ylabel("Arousal")'''
 
     # plt.tight_layout(pad=0.4, w_pad=0.5, h_pad=1.0)
-    plt.tight_layout()
+    # plt.tight_layout()
 
-    plt.show()
+  
