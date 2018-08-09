@@ -6,5 +6,7 @@ import matplotlib.pyplot as pltv
 file_path = r"C:\Users\DSPLab\Research\IAPSdata\AllSubjects_1-20.txt"
 
 # import the data
-IAPS_df = pd.read_csv(file_path,sep="\t",header=6)
+IAPS_header = []
+IAPS_df = pd.read_csv(file_path,skiprows=7,sep="\t",header=None)
+IAPS_df
 print(IAPS_df.head(5))
