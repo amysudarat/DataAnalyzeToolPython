@@ -16,6 +16,10 @@ def plotCircumplex(IAPS_df,amp,indexs):
                             xy=(IAPS_df['Val_mn'][index],IAPS_df['Arou_mn'][index]),xycoords='data',
                             xytext=(IAPS_df['Val_mn'][index],IAPS_df['Arou_mn'][index]), textcoords='data',
                             arrowprops=dict(facecolor='black',shrink=0.05))
+        ax.annotate(IAPS_df['IAPS'][index],
+                            xy=(IAPS_df['Val_mn'][index],IAPS_df['Arou_mn'][index]),xycoords='data',
+                            xytext=(IAPS_df['Val_mn'][index],IAPS_df['Arou_mn'][index]+0.01), textcoords='data')
+                            # arrowprops=dict(facecolor='black',shrink=0.05))
         # bx.annotate(IAPS_df['Description'][index],
         #                     xy=(IAPS_df['Val_mn'][index],IAPS_df['Arou_mn'][index]),xycoords='data',
         #                     xytext=(IAPS_df['Val_mn'][index],IAPS_df['Arou_mn'][index]), textcoords='data',
@@ -41,6 +45,11 @@ def plotCircumplex(IAPS_df,amp,indexs):
     ax.set_title("Circumplex Model of affect (SD valence)")
     ax.set_xlabel("Valence")
     ax.set_ylabel("Arousal")
+
+    # Set aspect ratio
+    ax.set_aspect('equal', 'datalim')
+
+    # Show plot
     plt.show()
 
 '''
