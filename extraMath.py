@@ -11,6 +11,6 @@ def calculateCoordinateFromAngle(r,angle):
     coorX = r*math.cos(math.radians(angle))+4.5
     coorX = float(format(coorX,'.2f'))
     coorY = r*math.sin(math.radians(angle))+4.5
-    coorY = float(format(coorX,'.2f'))
+    coorY = float(format(coorY,'.2f'))
     return (coorX, coorY)
     

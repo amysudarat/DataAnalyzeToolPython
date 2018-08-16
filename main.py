@@ -11,9 +11,9 @@ IAPs_file_path = r"C:\Research\AllSubjects_1-20.txt"
 IAPS_df = importIAPS(IAPs_file_path)
 
 # Three set of picture samples: Extreme, Moderate, Mild: Form (r,angle)
-Extreme = [(3.6,3),(3.6,34),(3.6,54),(3.6,71),(3.6,90),(3.6,143),
-          (3.6,149),(3.6,154),(3.6,173),(3.6,180),(3.6,190),(3.6,220),(3.6,234),
-          (3.6,317),(3.6,327),(3.6,332)]
+Extreme = [(3.6,3),(3,34),(3.6,54),(3,71),(2.5,90),(3.6,143),
+          (2,149),(2.6,154),(3.6,173),(2,180),(1,190),(1,220),(2,234),
+          (2,317),(2,327),(2,332)]
 # Moderate = [(3.6,3),(3.6,34),(3.6,54),(3.6,71),(3.6,90),(3.6,143),
 #           (3.6,149),(3.6,154),(3.6,173),(3.6,180),(3.6,190),(3.6,220),(3.6,234),
 #           (3.6,317),(3.6,327),(3.6,332)]
@@ -25,12 +25,11 @@ Extreme = [(3.6,3),(3.6,34),(3.6,54),(3.6,71),(3.6,90),(3.6,143),
 indexOfDescription = []
 for (a,b) in Extreme:
     r,angle = a,b
-    (x,y) = calculateCoordinateFromAngle(r,angle)   
-    # Pandas gave the dataframe object that always look like 2-D array so we have to flatten it to 1-D array using .ravel()
-    resultList = filterIAPS(IAPS_df,x,y,width=0.1)
+    (x,y) = calculateCoordinateFromAngle(r,angle)      
+    resultList = filterIAPS(IAPS_df,x,y,width=0.2)
     for i in resultList:
         indexOfDescription.append(i)
-    # indexOfDescription = list(set(indexOfDescription + filterIAPS(IAPS_df,x,y,width=0.1))
+    
 
 
 # Select rows by list of index
