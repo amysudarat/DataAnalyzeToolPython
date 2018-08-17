@@ -11,9 +11,10 @@ IAPs_file_path = r"C:\Research\AllSubjects_1-20.txt"
 IAPS_df = importIAPS(IAPs_file_path)
 
 # Three set of picture samples: Extreme, Moderate, Mild: Form (r,angle)
-Extreme = [(3.6,3),(3,34),(3.6,54),(3,71),(2.5,90),(3.6,143),
-          (2,149),(2.6,154),(3.6,173),(2,180),(1,190),(1,220),(2,234),
-          (2,317),(2,327),(2,332)]
+Test = [(3,15)]
+
+# Extreme = [(3.6,0),(3.5,30),(3.3,50),(2,110),(3.6,140),
+#           (1.7,180),(1.6,200),(1.3,220),(1.2,270),(2.5,317),(2.8,335)]
 # Moderate = [(3.6,3),(3.6,34),(3.6,54),(3.6,71),(3.6,90),(3.6,143),
 #           (3.6,149),(3.6,154),(3.6,173),(3.6,180),(3.6,190),(3.6,220),(3.6,234),
 #           (3.6,317),(3.6,327),(3.6,332)]
@@ -21,16 +22,16 @@ Extreme = [(3.6,3),(3,34),(3.6,54),(3,71),(2.5,90),(3.6,143),
 #           (3.6,149),(3.6,154),(3.6,173),(3.6,180),(3.6,190),(3.6,220),(3.6,234),
 #           (3.6,317),(3.6,327),(3.6,332)]
 
+# Set the target list
+targetList = Test
 # create indexOfDescription from lists
 indexOfDescription = []
-for (a,b) in Extreme:
+for (a,b) in targetList:
     r,angle = a,b
     (x,y) = calculateCoordinateFromAngle(r,angle)      
-    resultList = filterIAPS(IAPS_df,x,y,width=0.2)
+    resultList = filterIAPS(IAPS_df,x,y,width=0.4)
     for i in resultList:
         indexOfDescription.append(i)
-    
-
 
 # Select rows by list of index
 IAPS_filtered_df = IAPS_df.loc[indexOfDescription,:]

@@ -6,17 +6,27 @@ import shutil
 
 def main():
     # Get targeted dataframe
-    targetedIAPS = buildDataframe(3,6,0.1)
-    fileNameList = targetedIAPS["IAPS"].tolist()
-    fileNameList = [int(i) for i in fileNameList]
-    print(fileNameList)
+    # targetedIAPS = buildDataframe(3,6,0.1)
+    # targetedIAPS = []
+    # fileNameList = targetedIAPS["IAPS"].tolist()
+    # fileNameList = [int(i) for i in fileNameList]
+    # print(fileNameList)
 
-    # Copy all the selected picture to the targeted folder
-    for i in fileNameList:
-        # Declare src and dest   
-        src = r"C:\Users\DSPLab\Research\IAPSdata\IAPS 1-20 Images\\" + str(i) + r".jpg"
-        dest = r"C:\Users\DSPLab\Research\IAPSdata\IAPS 1-20 Images\\Sample1\\" + str(i) + r".jpg"
-        copyFile(src,dest)
+    # # Copy all the selected picture to the targeted folder
+    # for i in fileNameList:
+    #     # Declare src and dest   
+    #     src = r"C:\Research\IAPS 1-20 Images\\" + str(i) + r".jpg"
+    #     dest = r"C:\Research\IAPS 1-20 Images\\Sample_extreme\\" + str(i) + r".jpg"
+    #     copyFile(src,dest)
+    importSelectedList()
+
+def importSelectedList():
+    filePath = r"C:\Research\IAPSselectedList.csv"
+    selectedList = pd.read_csv(filePath,sep=",",index_col=0)
+    
+    
+    print(selectedList.index)
+    
 
 def buildDataframe(v,a,w):
     # import Data
