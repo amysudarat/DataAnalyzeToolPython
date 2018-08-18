@@ -13,12 +13,13 @@ def main():
     """
     # file path to csv file
     filePath = r"C:\Research\IAPS_selectedList_Mild.csv"
-    # Get targeted dataframe
+    # Get targeted List of picture number
     fileNameList = importSelectedList(filePath)
+
     # Check duplicated item in the list
     # print(pd.Series(fileNameList)[pd.Series(fileNameList).duplicated()].values)
     # print(len(set(fileNameList)))
-   
+ 
     # Copy all the selected picture to the targeted folder
     for i in fileNameList:
         # Declare src and dest   

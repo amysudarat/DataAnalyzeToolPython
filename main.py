@@ -1,8 +1,10 @@
 import pandas as pd
 from plotData import plotCircumplex
+from plotData import plotCircumplex_byImageFileName
 from importData import importIAPS
 from importData import filterIAPS
 from extraMath import calculateCoordinateFromAngle
+from selectImage import importSelectedList
 
 # import Data
 # declare file path (put r in front to convert normal string to raw string)
@@ -10,34 +12,32 @@ from extraMath import calculateCoordinateFromAngle
 IAPs_file_path = r"C:\Research\AllSubjects_1-20.txt"
 IAPS_df = importIAPS(IAPs_file_path)
 
-# Three set of picture samples: Extreme, Moderate, Mild: Form (r,angle)
-Test = [(3,15)]
-
-# Extreme = [(3.6,0),(3.5,30),(3.3,50),(2,110),(3.6,140),
-#           (1.7,180),(1.6,200),(1.3,220),(1.2,270),(2.5,317),(2.8,335)]
-# Moderate = [(3.6,3),(3.6,34),(3.6,54),(3.6,71),(3.6,90),(3.6,143),
-#           (3.6,149),(3.6,154),(3.6,173),(3.6,180),(3.6,190),(3.6,220),(3.6,234),
-#           (3.6,317),(3.6,327),(3.6,332)]
-# Mild = [(3.6,3),(3.6,34),(3.6,54),(3.6,71),(3.6,90),(3.6,143),
-#           (3.6,149),(3.6,154),(3.6,173),(3.6,180),(3.6,190),(3.6,220),(3.6,234),
-#           (3.6,317),(3.6,327),(3.6,332)]
-
-# Set the target list
-targetList = Test
-# create indexOfDescription from lists
-indexOfDescription = []
-for (a,b) in targetList:
-    r,angle = a,b
-    (x,y) = calculateCoordinateFromAngle(r,angle)      
-    resultList = filterIAPS(IAPS_df,x,y,width=0.4)
-    for i in resultList:
-        indexOfDescription.append(i)
-
-# Select rows by list of index
-IAPS_filtered_df = IAPS_df.loc[indexOfDescription,:]
-print(IAPS_filtered_df)
+""" Plot using list of indexes """
+# file path to list csv file
+list_file_path = r"C:\Research\IAPS_selectedList_Moderate.csv"
+# Get targeted index of rows
+indexOfDescription = importSelectedList(list_file_path)
 # Plot circumplex model of affect
-plotCircumplex(IAPS_df,amp=100,indexs=indexOfDescription)
+plotCircumplex_byImageFileName(IAPS_df,amp=100,indexs=indexOfDescription)
+
+
+""" Plot using radius and angle """
+# # Set the target list
+# targetList = [(3,15)]
+# # create indexOfDescription from lists
+# indexOfDescription = []
+# for (a,b) in targetList:
+#     r,angle = a,b
+#     (x,y) = calculateCoordinateFromAngle(r,angle)      
+#     resultList = filterIAPS(IAPS_df,x,y,width=0.4)
+#     for i in resultList:
+#         indexOfDescription.append(i)
+
+# # Select rows by list of index
+# IAPS_filtered_df = IAPS_df.loc[indexOfDescription,:]
+# print(IAPS_filtered_df)
+# # Plot circumplex model of affect
+# plotCircumplex(IAPS_df,amp=100,indexs=indexOfDescription)
 
 
 """  Old code with pin point method  """
