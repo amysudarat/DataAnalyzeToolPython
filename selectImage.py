@@ -3,6 +3,7 @@ from plotData import plotCircumplex
 from importData import importIAPS
 from importData import filterIAPS
 import shutil
+from math import isnan
 
 def main():
     # Get targeted dataframe
@@ -21,11 +22,19 @@ def main():
     importSelectedList()
 
 def importSelectedList():
-    filePath = r"C:\Research\IAPSselectedList.csv"
-    selectedList = pd.read_csv(filePath,sep=",",index_col=0)
-    
-    
-    print(selectedList.index)
+    filePath = r"C:\Research\IAPS_selectedList_Extreme.csv"
+    selectedList = pd.read_csv(filePath,sep=",",index_col=0)   
+    print(selectedList)
+    selectedList = selectedList[:10]
+    selectedList = selectedList.drop(selectedList.columns[9],axis=1)
+    totalList = []
+    for i in range(0,selectedList.shape[1]):
+        for j in selectedList.iloc[:,i]:
+            if not isnan(j):
+                totalList.append(int(j))
+
+    print(totalList)
+    print("Number of item: " + str(len(totalList)))
     
 
 def buildDataframe(v,a,w):
