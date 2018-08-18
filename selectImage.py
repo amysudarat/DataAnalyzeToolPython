@@ -6,25 +6,30 @@ import shutil
 from math import isnan
 
 def main():
+    """
+    Change the directory name and the file path corresponding to your need
+    Change the destination directory name and the directory should be existed
+    already
+    """
+    # file path to csv file
+    filePath = r"C:\Research\IAPS_selectedList_Mild.csv"
     # Get targeted dataframe
-    # targetedIAPS = buildDataframe(3,6,0.1)
-    # targetedIAPS = []
-    # fileNameList = targetedIAPS["IAPS"].tolist()
-    # fileNameList = [int(i) for i in fileNameList]
-    # print(fileNameList)
+    fileNameList = importSelectedList(filePath)
+    # Check duplicated item in the list
+    # print(pd.Series(fileNameList)[pd.Series(fileNameList).duplicated()].values)
+    # print(len(set(fileNameList)))
+   
+    # Copy all the selected picture to the targeted folder
+    for i in fileNameList:
+        # Declare src and dest   
+        src = r"C:\Research\IAPS 1-20 Images\\" + str(i) + r".jpg"
+        dest = r"C:\Research\IAPS 1-20 Images\\Sample_mild\\" + str(i) + r".jpg"
+        copyFile(src,dest)
 
-    # # Copy all the selected picture to the targeted folder
-    # for i in fileNameList:
-    #     # Declare src and dest   
-    #     src = r"C:\Research\IAPS 1-20 Images\\" + str(i) + r".jpg"
-    #     dest = r"C:\Research\IAPS 1-20 Images\\Sample_extreme\\" + str(i) + r".jpg"
-    #     copyFile(src,dest)
-    importSelectedList()
-
-def importSelectedList():
-    filePath = r"C:\Research\IAPS_selectedList_Extreme.csv"
+    
+def importSelectedList(filePath):
     selectedList = pd.read_csv(filePath,sep=",",index_col=0)   
-    print(selectedList)
+    # print(selectedList)
     selectedList = selectedList[:10]
     selectedList = selectedList.drop(selectedList.columns[9],axis=1)
     totalList = []
@@ -33,8 +38,9 @@ def importSelectedList():
             if not isnan(j):
                 totalList.append(int(j))
 
-    print(totalList)
-    print("Number of item: " + str(len(totalList)))
+    # print(totalList)
+    print("Number of item: " + str(len(set(totalList))))
+    return totalList
     
 
 def buildDataframe(v,a,w):
