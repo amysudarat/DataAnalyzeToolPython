@@ -1,17 +1,5 @@
 import math
 
-<<<<<<< HEAD
-
-def calculateCoordinateFromAngle(coorX,angle):
-    '''
-    return the coordinate of y from angle in degrees
-    '''
-    coorX=- 4.5
-    coorY = coorX*math.sin(math.radians(angle))
-    coorY = float(format(coorY,'.2f'))+5
-    return 
-
-=======
 def calculateCoordinateFromAngle(r,angle):
     '''
     r= radius, angle= angle in degrees
@@ -26,4 +14,4 @@ def calculateCoordinateFromAngle(r,angle):
     coorY = float(format(coorY,'.2f'))
     return (coorX, coorY)
     
->>>>>>> ec91de9686c4c1a42a26b784e1d33e503502fc7c
+
