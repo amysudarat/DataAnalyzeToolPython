@@ -4,10 +4,8 @@ from plotData import plotCircumplex_byImageFileName
 from importData import importIAPS
 from importData import filterIAPS
 from extraMath import calculateCoordinateFromAngle
-<<<<<<< HEAD
-=======
 from selectImage import importSelectedList
->>>>>>> ec91de9686c4c1a42a26b784e1d33e503502fc7c
+
 
 # import Data
 # declare file path (put r in front to convert normal string to raw string)
@@ -15,15 +13,6 @@ from selectImage import importSelectedList
 IAPs_file_path = r"C:\Research\AllSubjects_1-20.txt"
 IAPS_df = importIAPS(IAPs_file_path)
 
-<<<<<<< HEAD
-# set x coordination
-x = 3 
-y = calculateCoordinateFromAngle(x,45)
-y = float(format(y,'.2f'))
-print(y)
-# # get list of indexs by pin point location (df,valence,arousal,width)
-# indexOfDescription = filterIAPS(IAPS_df,x,calculateCoordinateFromAngle(x,30),width=0.2)
-=======
 """ Plot using list of indexes """
 # file path to list csv file
 list_file_path = r"C:\Research\IAPS_selectedList_Moderate.csv"
@@ -56,7 +45,7 @@ plotCircumplex_byImageFileName(IAPS_df,amp=100,indexs=indexOfDescription)
 
 # # get list of indexs by pin point location (df,valence,arousal,width)
 # indexOfDescription = filterIAPS(IAPS_df,9,9,width=0.2)
->>>>>>> ec91de9686c4c1a42a26b784e1d33e503502fc7c
+
 # # Select rows by list of index
 # IAPS_filtered_df = IAPS_df.loc[indexOfDescription,:]
 # print(IAPS_filtered_df)
