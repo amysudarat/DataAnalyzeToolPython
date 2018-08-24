@@ -12,7 +12,7 @@ def main():
     already
     """
     # file path to csv file
-    filePath = r"C:\Research\IAPS_selectedList_Mild.csv"
+    filePath = r"C:\Users\DSPLab\Research\IAPSdata\IAPS_selectedList_Mild.csv"
     # Get targeted List of picture number
     fileNameList = importSelectedList(filePath)
 
@@ -23,8 +23,8 @@ def main():
     # Copy all the selected picture to the targeted folder
     for i in fileNameList:
         # Declare src and dest   
-        src = r"C:\Research\IAPS 1-20 Images\\" + str(i) + r".jpg"
-        dest = r"C:\Research\IAPS 1-20 Images\\Sample_mild\\" + str(i) + r".jpg"
+        src = r"C:\Users\DSPLab\Research\IAPSdata\IAPS 1-20 Images\\" + str(i) + r".jpg"
+        dest = r"C:\Users\DSPLab\Research\IAPSdata\IAPS 1-20 Images\\Sample_mild\\" + str(i) + r".jpg"
         copyFile(src,dest)
 
     
