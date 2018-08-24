@@ -3,20 +3,46 @@ from plotData import plotCircumplex
 from importData import importIAPS
 from importData import filterIAPS
 import shutil
+from math import isnan
 
 def main():
-    # Get targeted dataframe
-    targetedIAPS = buildDataframe(3,6,0.1)
-    fileNameList = targetedIAPS["IAPS"].tolist()
-    fileNameList = [int(i) for i in fileNameList]
-    print(fileNameList)
+    """
+    Change the directory name and the file path corresponding to your need
+    Change the destination directory name and the directory should be existed
+    already
+    """
+    # file path to csv file
+    filePath = r"C:\Research\IAPS_selectedList_Mild.csv"
+    # Get targeted List of picture number
+    fileNameList = importSelectedList(filePath)
 
+    # Check duplicated item in the list
+    # print(pd.Series(fileNameList)[pd.Series(fileNameList).duplicated()].values)
+    # print(len(set(fileNameList)))
+ 
     # Copy all the selected picture to the targeted folder
     for i in fileNameList:
         # Declare src and dest   
-        src = r"C:\Users\DSPLab\Research\IAPSdata\IAPS 1-20 Images\\" + str(i) + r".jpg"
-        dest = r"C:\Users\DSPLab\Research\IAPSdata\IAPS 1-20 Images\\Sample1\\" + str(i) + r".jpg"
+        src = r"C:\Research\IAPS 1-20 Images\\" + str(i) + r".jpg"
+        dest = r"C:\Research\IAPS 1-20 Images\\Sample_mild\\" + str(i) + r".jpg"
         copyFile(src,dest)
+
+    
+def importSelectedList(filePath):
+    selectedList = pd.read_csv(filePath,sep=",",index_col=0)   
+    # print(selectedList)
+    selectedList = selectedList[:10]
+    selectedList = selectedList.drop(selectedList.columns[9],axis=1)
+    totalList = []
+    for i in range(0,selectedList.shape[1]):
+        for j in selectedList.iloc[:,i]:
+            if not isnan(j):
+                totalList.append(int(j))
+
+    # print(totalList)
+    print("Number of item: " + str(len(set(totalList))))
+    return totalList
+    
 
 def buildDataframe(v,a,w):
     # import Data
