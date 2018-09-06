@@ -30,29 +30,13 @@ def main():
     selectedIAPS_df_export["ValenceMean"] = selectedIAPS_df["Val_mn"]
     selectedIAPS_df_export["ArousalMean"] = selectedIAPS_df["Arou_mn"]
     selectedIAPS_df_export["ValenceSD"] = selectedIAPS_df["Val_sd"]
-    selectedIAPS_df_export["ArousalSD"] = selectedIAPS_df["Arou_sd"]
-    selectedIAPS_df_export["picture"] = generateImageFileName(selectedIAPS_df["IAPS"])
-    selectedIAPS_df_export["imageID"] = convertFloatToInt(selectedIAPS_df_export["imageID"])
+    selectedIAPS_df_export["ArousalSD"] = selectedIAPS_df["Arou_sd"]   
+    selectedIAPS_df_export["picture"] = [str(int(x))+".jpg" for x in selectedIAPS_df["IAPS"]]
+    selectedIAPS_df_export["imageID"] = [int(x) for x in selectedIAPS_df_export["imageID"]]
     print(selectedIAPS_df_export.head())
 
     #export to text file
     np.savetxt(r"C:\Users\DSPLab\Research\IAPSdata\IAPSinfoFile_Moderate.txt", selectedIAPS_df_export.values, delimiter=",", fmt="%s")
-    
-
-def generateImageFileName(listInput):
-    result = []
-    for elem in listInput:
-        result.append(str(int(elem))+".jpg")
-    return result
-
-def convertFloatToInt(listInput):
-    result = []
-    for elem in listInput:
-        result.append(int(elem))
-    return result
-
-
-
 
 # To start the program in main 
 # (have to place at last so every function above get recoginized first)
