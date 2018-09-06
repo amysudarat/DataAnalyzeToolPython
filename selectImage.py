@@ -12,19 +12,19 @@ def main():
     already
     """
     # file path to csv file
-    filePath = r"C:\Users\DSPLab\Research\IAPSdata\IAPS_selectedList_Mild.csv"
+    filePath = r"C:\Users\DSPLab\Research\IAPSdata\IAPS_selectedList_Moderate.csv"
     # Get targeted List of picture number
     fileNameList = importSelectedList(filePath)
 
     # Check duplicated item in the list
-    # print(pd.Series(fileNameList)[pd.Series(fileNameList).duplicated()].values)
-    # print(len(set(fileNameList)))
+    print(pd.Series(fileNameList)[pd.Series(fileNameList).duplicated()].values)
+    print(len(set(fileNameList)))
  
     # Copy all the selected picture to the targeted folder
     for i in fileNameList:
         # Declare src and dest   
         src = r"C:\Users\DSPLab\Research\IAPSdata\IAPS 1-20 Images\\" + str(i) + r".jpg"
-        dest = r"C:\Users\DSPLab\Research\IAPSdata\IAPS 1-20 Images\\Sample_mild\\" + str(i) + r".jpg"
+        dest = r"C:\Users\DSPLab\Research\IAPSdata\IAPS 1-20 Images\\Sample_moderate\\" + str(i) + r".jpg"
         copyFile(src,dest)
 
     
