@@ -12,7 +12,7 @@ def main():
     IAPS_df = importIAPS(IAPs_file_path)
 
     # file path to csv file
-    filePath = r"C:\Users\DSPLab\Research\IAPSdata\IAPS_selectedList_Extreme.csv"
+    filePath = r"C:\Users\DSPLab\Research\IAPSdata\IAPS_selectedList_Mild.csv"
     # Get targeted List of picture number
     fileNameList = importSelectedList(filePath)
     # print(len(fileNameList))
@@ -28,7 +28,7 @@ def main():
     # selectedIAPS_df_export["imageID"] = convertFloatToInt(selectedIAPS_df["IAPS"])
     selectedIAPS_df_export["imageID"] = selectedIAPS_df["IAPS"]
     selectedIAPS_df_export["slideNumber"] = [x+1 for x in range(len(selectedIAPS_df.index))]
-    selectedIAPS_df_export["pictureSet"] = [2 for x in range(len(selectedIAPS_df.index))] #Change the name of set here
+    selectedIAPS_df_export["pictureSet"] = [3 for x in range(len(selectedIAPS_df.index))] #Change the name of set here
     selectedIAPS_df_export["ValenceMean"] = selectedIAPS_df["Val_mn"]
     selectedIAPS_df_export["ArousalMean"] = selectedIAPS_df["Arou_mn"]
     selectedIAPS_df_export["ValenceSD"] = selectedIAPS_df["Val_sd"]
@@ -38,7 +38,7 @@ def main():
     # print(len(selectedIAPS_df_export))
 
     #export to text file
-    np.savetxt(r"C:\Users\DSPLab\Research\IAPSdata\IAPSinfoFile_Extreme.txt", selectedIAPS_df_export.values, delimiter=",", fmt="%s")
+    np.savetxt(r"C:\Users\DSPLab\Research\IAPSdata\IAPSinfoFile_Mild.txt", selectedIAPS_df_export.values, delimiter=",", fmt="%s")
 
 # To start the program in main 
 # (have to place at last so every function above get recoginized first)

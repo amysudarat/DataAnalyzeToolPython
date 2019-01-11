@@ -1,6 +1,7 @@
 import pandas as pd
 from plotData import plotCircumplex
 from plotData import plotCircumplex_byImageFileName
+from plotData import plotCircumplex_by_SD
 from importData import importIAPS
 from importData import filterIAPS
 from extraMath import calculateCoordinateFromAngle
@@ -21,6 +22,9 @@ indexOfDescription = importSelectedList(list_file_path)
 # Plot circumplex model of affect
 plotCircumplex_byImageFileName(IAPS_df,amp=100,indexs=indexOfDescription)
 
+
+""" Plot using SD as a filter"""
+plotCircumplex_by_SD(IAPS_df,1)
 
 """ Plot using radius and angle """
 # # Set the target list
