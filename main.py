@@ -11,12 +11,14 @@ from selectImage import importSelectedList
 # import Data
 # declare file path (put r in front to convert normal string to raw string)
 # IAPs_file_path = r"C:\Users\DSPLab\Research\IAPSdata\AllSubjects_1-20.txt"
-IAPs_file_path = r"C:\Users\DSPLab\Research\IAPSdata\AllSubjects_1-20.txt"
+#IAPs_file_path = r"C:\Users\DSPLab\Research\IAPSdata\AllSubjects_1-20.txt"
+IAPs_file_path = r"E:\Research\IAPSdata\AllSubjects_1-20.txt"
 IAPS_df = importIAPS(IAPs_file_path)
 
 """ Plot using list of indexes """
 # file path to list csv file
-list_file_path = r"C:\Users\DSPLab\Research\IAPSdata\IAPS_selectedList_Moderate.csv"
+#list_file_path = r"C:\Users\DSPLab\Research\IAPSdata\IAPS_selectedList_Moderate.csv"
+list_file_path = r"E:\Research\IAPSdata\IAPS_selectedList_Mild.csv"
 # Get targeted index of rows
 indexOfDescription = importSelectedList(list_file_path)
 # Plot circumplex model of affect
@@ -47,11 +49,11 @@ plotCircumplex_by_SD(IAPS_df,1)
 
 """  Old code with pin point method  """
 
-# # get list of indexs by pin point location (df,valence,arousal,width)
-# indexOfDescription = filterIAPS(IAPS_df,9,9,width=0.2)
+# get list of indexs by pin point location (df,valence,arousal,width)
+indexOfDescription = filterIAPS(IAPS_df,6,6,width=0.2)
 
-# # Select rows by list of index
-# IAPS_filtered_df = IAPS_df.loc[indexOfDescription,:]
-# print(IAPS_filtered_df)
-# # Plot circumplex model of affect
-# plotCircumplex(IAPS_df,amp=100,indexs=indexOfDescription)
+# Select rows by list of index
+IAPS_filtered_df = IAPS_df.loc[indexOfDescription,:]
+print(IAPS_filtered_df)
+# Plot circumplex model of affect
+plotCircumplex(IAPS_df,amp=100,indexs=indexOfDescription)
