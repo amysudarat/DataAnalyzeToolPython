@@ -12,7 +12,7 @@ def main():
     IAPS_df = importIAPS(IAPs_file_path)
 
     # file path to csv file
-    filePath = r"C:\Users\DSPLab\Research\IAPSdata\IAPS_selectedList_Mild.csv"
+    filePath = r"C:\Users\DSPLab\Research\IAPSdata\IAPS_selectedList_Final.csv"
     # Get targeted List of picture number
     fileNameList = importSelectedList(filePath)
     # print(len(fileNameList))
@@ -38,7 +38,7 @@ def main():
     # print(len(selectedIAPS_df_export))
 
     #export to text file
-    np.savetxt(r"C:\Users\DSPLab\Research\IAPSdata\IAPSinfoFile_Mild.txt", selectedIAPS_df_export.values, delimiter=",", fmt="%s")
+    np.savetxt(r"C:\Users\DSPLab\Research\IAPSdata\IAPSinfoFile_Final.txt", selectedIAPS_df_export.values, delimiter=",", fmt="%s")
 
 # To start the program in main 
 # (have to place at last so every function above get recoginized first)
